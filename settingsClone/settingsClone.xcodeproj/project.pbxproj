@@ -7,18 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6400AB482962E28F0038A56F /* settings.json in Resources */ = {isa = PBXBuildFile; fileRef = 6400AB472962E28F0038A56F /* settings.json */; };
 		644B89AA29618B3F007F126D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644B89A929618B3F007F126D /* AppDelegate.swift */; };
 		644B89AC29618B3F007F126D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644B89AB29618B3F007F126D /* SceneDelegate.swift */; };
 		644B89B329618B45007F126D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 644B89B229618B45007F126D /* Assets.xcassets */; };
 		644B89B629618B45007F126D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 644B89B429618B45007F126D /* LaunchScreen.storyboard */; };
 		644B89C729618D52007F126D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644B89C629618D52007F126D /* SettingsViewController.swift */; };
 		644B89C929618D9C007F126D /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644B89C829618D9C007F126D /* SettingsModel.swift */; };
-		644B89CB29618DF4007F126D /* NotifiedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644B89CA29618DF4007F126D /* NotifiedTableViewCell.swift */; };
 		644B89CE29618E9C007F126D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 644B89CD29618E9C007F126D /* SnapKit */; };
 		644B89D029619031007F126D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644B89CF29619031007F126D /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6400AB472962E28F0038A56F /* settings.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = settings.json; sourceTree = "<group>"; };
 		644B89A629618B3F007F126D /* settingsClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = settingsClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		644B89A929618B3F007F126D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		644B89AB29618B3F007F126D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -27,7 +28,6 @@
 		644B89B729618B45007F126D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		644B89C629618D52007F126D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		644B89C829618D9C007F126D /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
-		644B89CA29618DF4007F126D /* NotifiedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifiedTableViewCell.swift; sourceTree = "<group>"; };
 		644B89CF29619031007F126D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,6 +73,7 @@
 			children = (
 				644B89B729618B45007F126D /* Info.plist */,
 				644B89B229618B45007F126D /* Assets.xcassets */,
+				6400AB472962E28F0038A56F /* settings.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -118,7 +119,6 @@
 		644B89C329618BF3007F126D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				644B89CA29618DF4007F126D /* NotifiedTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -203,6 +203,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6400AB482962E28F0038A56F /* settings.json in Resources */,
 				644B89B629618B45007F126D /* LaunchScreen.storyboard in Resources */,
 				644B89B329618B45007F126D /* Assets.xcassets in Resources */,
 			);
@@ -217,7 +218,6 @@
 			files = (
 				644B89C929618D9C007F126D /* SettingsModel.swift in Sources */,
 				644B89D029619031007F126D /* Extensions.swift in Sources */,
-				644B89CB29618DF4007F126D /* NotifiedTableViewCell.swift in Sources */,
 				644B89AA29618B3F007F126D /* AppDelegate.swift in Sources */,
 				644B89AC29618B3F007F126D /* SceneDelegate.swift in Sources */,
 				644B89C729618D52007F126D /* SettingsViewController.swift in Sources */,
@@ -364,7 +364,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 87G7HNZ9T9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = settingsClone/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Settings;
@@ -372,6 +372,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -394,7 +395,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 87G7HNZ9T9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = settingsClone/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Settings;
@@ -402,6 +403,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

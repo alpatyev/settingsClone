@@ -1,14 +1,16 @@
 //
-//  NotifiedTableViewCell.swift
+//  SwitchableTableViewCell.swift
 //  settingsClone
 //
 //  Created by Nikita Alpatiev on 1/1/23.
 //
 
 import UIKit
-import SnapKit
 
-final class NotifiedTableViewCell: UITableViewCell {
+/*
+
+final class SwitchableTableViewCell {
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -17,5 +19,7 @@ final class NotifiedTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+
 }
 
+*/

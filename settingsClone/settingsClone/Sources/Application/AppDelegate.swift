@@ -11,10 +11,11 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        SettingsModel.updateData()
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = SettingsViewController()
+        window?.rootViewController = UINavigationController(rootViewController: SettingsViewController())
         window?.makeKeyAndVisible()
         return true
     }

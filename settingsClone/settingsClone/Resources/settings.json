@@ -1,0 +1,55 @@
+{
+  "sectionData": [
+    {
+        "name": "system",
+        "cells": [
+            {
+                "text": "text",
+                "image": "home",
+                "rightView": "switch"
+            },
+            {
+                "text": "other text",
+                "image": "wifi",
+                
+            },
+            {
+                "text": "some text",
+                "image": "bluetooth",
+                "rightView": "notify"
+            },
+            {
+                "text": "still some text",
+                "image": "airplane",
+                "rightView": "none"
+            },
+        ]
+    },
+    {
+        "name": "network",
+        "cells": [
+            {
+                "text": "1010",
+                "image": "home",
+                "rightView": "switch"
+            },
+            {
+                "text": "other text",
+                "image": "wifi",
+                "rightView": "switch"
+            },
+            {
+                "text": "some text",
+                "image": "bluetooth",
+                "rightView": "notify"
+            },
+            {
+                "text": "still some text",
+                "image": "airplane",
+                "rightView": "notify"
+            },
+        ]
+    }
+
+  ]
+}
