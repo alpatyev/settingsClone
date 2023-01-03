@@ -13,9 +13,11 @@ final class SettingsViewController: UIViewController {
     // MARK: - UI
     
     lazy var list: UITableView = {
-        let tableView = UITableView()
-        tableView.backgroundColor = .black
+        let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.delegate = self
         tableView.dataSource = self
+        tableView.register(MutableTableViewCell.self,
+                           forCellReuseIdentifier: MutableTableViewCell.identifier)
         return tableView
     }()
     
@@ -31,7 +33,9 @@ final class SettingsViewController: UIViewController {
     // MARK: - Setup view
     
     private func setupView() {
-        view.backgroundColor = .darkGray
+        view.backgroundColor = .white
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.topItem?.title = "Settings"
     }
     
     // MARK: - Setup hierarchy

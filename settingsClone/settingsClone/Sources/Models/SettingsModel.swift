@@ -10,13 +10,16 @@ import Foundation
 // MARK: - Data model
 
 struct Cell: Codable {
-    var image: String
-    var text: String
-    var rightView: String?
+    let image: String
+    let title: String
+    
+    var subtitle: String? = nil
+    var badges: Int? = nil
+    var switcher: Bool? = nil
 }
 
 struct Section: Codable {
-    var name: String
+    let name: String
     var cells: [Cell]
 }
 
@@ -31,10 +34,21 @@ struct SettingsModel {
     static var resourceName = "settings"
     static var list = [Section]()
     
+    static func selectCellFrom(_ sectionIndex: Int, _ rowIndex: Int) -> Cell? {
+        guard sectionIndex < SettingsModel.list.count else {
+            return nil
+        }
+        guard rowIndex < SettingsModel.list[sectionIndex].cells.count else {
+            return nil
+        }
+        return SettingsModel.list[sectionIndex].cells[rowIndex]
+    }
+    
     static func fetch() -> Settings? {
         guard let settingsPath = Bundle.main.path(forResource: SettingsModel.resourceName, ofType: "json") else {
             return nil
         }
+        
         let url = URL(fileURLWithPath: settingsPath)
         
         do {
@@ -48,13 +62,6 @@ struct SettingsModel {
     static func updateData() {
         if let result = SettingsModel.fetch() {
             SettingsModel.list = result.sectionData
-            
-            SettingsModel.list.forEach { section in
-                print("SECTION: \(section.name)")
-                section.cells.forEach { cell in
-                    print("-CELL WITH: \(cell.image).jpg + [\(cell.text)] + action @\(cell.rightView ?? "nextVC")")
-                }
-            }
         }
     }
 }

@@ -1,55 +1,67 @@
 {
-  "sectionData": [
-    {
-        "name": "system",
-        "cells": [
-            {
-                "text": "text",
-                "image": "home",
-                "rightView": "switch"
-            },
-            {
-                "text": "other text",
-                "image": "wifi",
-                
-            },
-            {
-                "text": "some text",
-                "image": "bluetooth",
-                "rightView": "notify"
-            },
-            {
-                "text": "still some text",
-                "image": "airplane",
-                "rightView": "none"
-            },
-        ]
-    },
-    {
-        "name": "network",
-        "cells": [
-            {
-                "text": "1010",
-                "image": "home",
-                "rightView": "switch"
-            },
-            {
-                "text": "other text",
-                "image": "wifi",
-                "rightView": "switch"
-            },
-            {
-                "text": "some text",
-                "image": "bluetooth",
-                "rightView": "notify"
-            },
-            {
-                "text": "still some text",
-                "image": "airplane",
-                "rightView": "notify"
-            },
-        ]
-    }
-
-  ]
+    "sectionData": [
+        {
+            "name": "AppleID",
+            "cells": [
+                {
+                    "image": "home",
+                    "title": "omg title",
+                    "subtitle": "Apple ID, ICloud, Itunes & App Store"
+                }
+            ]
+        },
+        {
+            "name": "AppleID",
+            "cells": [
+                {
+                    "image": "home",
+                    "title": "omg title",
+                    "subtitle": "Apple ID, ICloud, Itunes & App Store"
+                },
+                {
+                    "image": "home",
+                    "title": "omg title",
+                    "subtitle": "Apple ID, ICloud, Itunes & App Store"
+                }
+            ]
+        },
+        {
+            "name": "network",
+            "cells": [
+                {
+                    "image": "account",
+                    "title": "News",
+                    "badges": 1,
+                },
+                {
+                    "image": "network.3G",
+                    "title": "Mobile data",
+                    "switcher": false
+                },
+                {
+                    "image": "network",
+                    "title": "Wi-Fi",
+                },
+                {
+                    "image": "bluetooth",
+                    "title": "Bluetooth",
+                    "switcher": true
+                },
+                {
+                    "image": "hotspot",
+                    "title": "Hotspot mode",
+                    "switcher": false
+                }
+            ]
+        },
+        {
+            "name": "Developer",
+            "cells": [
+                {
+                    "image": "hammer",
+                    "title": "here you can configure this",
+                }
+            ]
+        }
+    ]
 }
