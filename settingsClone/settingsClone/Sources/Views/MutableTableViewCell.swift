@@ -8,17 +8,19 @@
 import UIKit
 import SnapKit
 
-class MutableTableViewCell: UITableViewCell {
+class MutableTableViewCell: UITableViewCell, CustomCell {
+    static var identifier = "settings"
     
-    static var identifier = "systemSettings"
+    var internalData: Cell?
     
-    // MARK: - UI
-    
-    private var model: Cell?
-    
-    // MARK: - Setups
-    
-    public func configure(with cell: Cell?) {
-        model = cell
+    func updateSubviews() {
+        
     }
+    
+    func updateSetingsModel() {
+        
+    }
+    
+    
+    
 }

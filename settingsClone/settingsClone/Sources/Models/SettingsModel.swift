@@ -34,7 +34,20 @@ struct SettingsModel {
     static var resourceName = "settings"
     static var list = [Section]()
     
-    static func selectCellFrom(_ sectionIndex: Int, _ rowIndex: Int) -> Cell? {
+    static func updateCell(from path: IndexPath?, cell: Cell) {
+        guard let indexPath = path else {
+            return
+        }
+        guard indexPath.section < list.count else {
+            return
+        }
+        guard indexPath.row < list[indexPath.section].cells.count else {
+            return
+        }
+        list[indexPath.section].cells[indexPath.row] = cell
+    }
+    
+    static func returnCellFrom(_ sectionIndex: Int, _ rowIndex: Int) -> Cell? {
         guard sectionIndex < SettingsModel.list.count else {
             return nil
         }
@@ -59,7 +72,7 @@ struct SettingsModel {
         }
     }
     
-    static func updateData() {
+    static func setupData() {
         if let result = SettingsModel.fetch() {
             SettingsModel.list = result.sectionData
         }

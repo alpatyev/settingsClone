@@ -16,8 +16,8 @@ final class SettingsViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(MutableTableViewCell.self,
-                           forCellReuseIdentifier: MutableTableViewCell.identifier)
+        tableView.register(CustomTableViewCell.self,
+                           forCellReuseIdentifier: CustomTableViewCell.identifier)
         return tableView
     }()
     
@@ -30,7 +30,7 @@ final class SettingsViewController: UIViewController {
         setupLayout()
     }
     
-    // MARK: - Setup view
+    // MARK: - Setup tableview
     
     private func setupView() {
         view.backgroundColor = .white
@@ -38,21 +38,18 @@ final class SettingsViewController: UIViewController {
         navigationController?.navigationBar.topItem?.title = "Settings"
     }
     
-    // MARK: - Setup hierarchy
+    // MARK: - Setup tableview hierarchy
     
     private func setupHierarchy() {
         view.addSubview(list)
     }
     
-    // MARK: - Setup layout
+    // MARK: - Setup tableview layout
     
     private func setupLayout() {
         list.snp.makeConstraints { make in
             make.top.bottom.left.right.equalTo(view)
         }
     }
-    
-    // MARK: - Actions
-
 }
 

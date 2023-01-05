@@ -1,27 +1,12 @@
 {
     "sectionData": [
         {
-            "name": "AppleID",
+            "name": "appleid",
             "cells": [
                 {
-                    "image": "home",
-                    "title": "omg title",
-                    "subtitle": "Apple ID, ICloud, Itunes & App Store"
-                }
-            ]
-        },
-        {
-            "name": "AppleID",
-            "cells": [
-                {
-                    "image": "home",
-                    "title": "omg title",
-                    "subtitle": "Apple ID, ICloud, Itunes & App Store"
-                },
-                {
-                    "image": "home",
-                    "title": "omg title",
-                    "subtitle": "Apple ID, ICloud, Itunes & App Store"
+                    "image": "account",
+                    "title": "Johnny Appleseed",
+                    "subtitle": "Apple ID, iCloud, iTunes & App Store"
                 }
             ]
         },
@@ -29,37 +14,71 @@
             "name": "network",
             "cells": [
                 {
-                    "image": "account",
-                    "title": "News",
-                    "badges": 1,
-                },
-                {
-                    "image": "network.3G",
-                    "title": "Mobile data",
+                    "image": "airplane",
+                    "title": "Airplane Mode",
                     "switcher": false
                 },
                 {
-                    "image": "network",
+                    "image": "wifi",
                     "title": "Wi-Fi",
+                    "subtitle": "McDonald’s free"
                 },
                 {
                     "image": "bluetooth",
                     "title": "Bluetooth",
-                    "switcher": true
+                    "subtitle": "Off"
                 },
                 {
-                    "image": "hotspot",
-                    "title": "Hotspot mode",
-                    "switcher": false
+                    "image": "mobiledata",
+                    "title": "Mobile Data",
+                    "subtitle": "Beeline"
                 }
             ]
         },
         {
-            "name": "Developer",
+            "name": "general",
             "cells": [
                 {
-                    "image": "hammer",
-                    "title": "here you can configure this",
+                    "image": "general",
+                    "title": "General",
+                    "badges": 2
+                },
+                {
+                    "image": "controls",
+                    "title": "Control Centre"
+                },
+                {
+                    "image": "display",
+                    "title": "Display & Brightness",
+                },
+                {
+                    "image": "siri",
+                    "title": "Siri & Search",
+                },
+                {
+                    "image": "wallpaper",
+                    "title": "Wallpaper",
+                },
+                {
+                    "image": "fingerprint",
+                    "title": "Touch ID & Passcode"
+                },
+                {
+                    "image": "sos",
+                    "title": "Emergency SOS",
+                },
+                {
+                    "image": "exposure",
+                    "title": "Exposure Notifications",
+                },
+                {
+                    "image": "battery",
+                    "title": "Battery",
+                    "badges": 1
+                },
+                {
+                    "image": "privacy",
+                    "title": "Privacy"
                 }
             ]
         }
