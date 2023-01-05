@@ -43,10 +43,18 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    // MARK: - Recognize selected cell action
+    // MARK: - Open deail and throw data
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         list.deselectRow(at: indexPath, animated: true)
+        if let cell = SettingsModel.returnCellFrom(indexPath.section, indexPath.row) {
+            if (cell.switcher == nil) {
+                let detailViewController = DetailViewController()
+                detailViewController.setupTitle(cell.title)
+                detailViewController.setupImage(from: cell.image)
+                navigationController?.pushViewController(detailViewController, animated: true)
+            }
+        }
     }
 }
 

@@ -22,7 +22,6 @@ final class CustomTableViewCell: UITableViewCell {
     }
     
     private var divider = UIScreen.main.bounds.width * 0.035
-
     
     // MARK: - UI
     
@@ -30,30 +29,20 @@ final class CustomTableViewCell: UITableViewCell {
     
     private lazy var mainTitle = UILabel()
     
-    private lazy var subtitleOrBadge = UILabel()
-    
     private lazy var rightSubview = UIView()
+    
+    private lazy var subtitle = UILabel()
+    
+    private lazy var badges = UILabel()
     
     private lazy var switcher = UISwitch()
     
     // MARK: - Lifecycle
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError()
-    }
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         setupHierarchy()
-        updateSubviews(contentView.frame)
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
+        updateSubviews(frame)
     }
     
     // MARK: - Get model data
@@ -68,6 +57,10 @@ final class CustomTableViewCell: UITableViewCell {
     // MARK: - Setups and updates UI
     
     private func setupHierarchy() {
+        switcher.removeFromSuperview()
+        subtitle.removeFromSuperview()
+        badges.removeFromSuperview()
+        
         contentView.addSubview(leftImage)
         contentView.addSubview(mainTitle)
         contentView.addSubview(rightSubview)
@@ -80,25 +73,29 @@ final class CustomTableViewCell: UITableViewCell {
         
         if let switchState = internalData.switcher {
             setupSwitcher(with: switchState)
-        } else if let badgeCount = internalData.badges {
-            setupBadges(with: badgeCount)
         } else if let subtitleText = internalData.subtitle {
             setupSubtitle(with: subtitleText)
+        } else if let badgeCount = internalData.badges {
+            setupBadges(with: badgeCount)
+        } else {
+            rightSubview.subviews.forEach { $0.removeFromSuperview() }
         }
     }
     
-
     private func setupImage(_ frame: CGRect) {
-        let imageEdge = frame.height * 0.75
+        let imageEdge = frame.height * 0.64
         
         if let icon = UIImage.init(named: internalData.image) {
             leftImage.image = icon
         } else {
             leftImage.image = UIImage.init(named: "default")
         }
+        
+        leftImage.contentMode = .scaleAspectFill
         leftImage.clipsToBounds = true
         leftImage.layer.cornerRadius = isLoginCell ? imageEdge / 2 : 8
         
+        leftImage.snp.removeConstraints()
         leftImage.snp.makeConstraints { make in
             make.width.height.equalTo(imageEdge)
             make.left.equalTo(contentView).offset(divider)
@@ -110,6 +107,7 @@ final class CustomTableViewCell: UITableViewCell {
         mainTitle.text = internalData.title
         mainTitle.font = .systemFont(ofSize: 17, weight: .regular)
         
+        mainTitle.snp.removeConstraints()
         mainTitle.snp.makeConstraints { make in
             make.left.equalTo(leftImage.snp.right).offset(divider)
             make.right.equalTo(rightSubview)
@@ -119,6 +117,7 @@ final class CustomTableViewCell: UITableViewCell {
     }
     
     private func setupRightSubview() {
+        rightSubview.snp.removeConstraints()
         rightSubview.snp.makeConstraints { make in
             make.height.equalTo(contentView)
             make.width.equalTo(contentView).multipliedBy(0.25)
@@ -132,55 +131,58 @@ final class CustomTableViewCell: UITableViewCell {
         switcher.addTarget(self, action: #selector(switchToggled), for: .valueChanged)
         
         rightSubview.addSubview(switcher)
+        switcher.snp.removeConstraints()
         switcher.snp.makeConstraints { make in
             make.centerY.equalTo(rightSubview)
-            make.right.equalTo(rightSubview).inset(divider)
+            make.width.lessThanOrEqualTo(contentView.frame.height)
+            make.right.equalTo(rightSubview).inset(divider * 2)
         }
     }
     
     private func setupBadges(with count: Int) {
-        let edge = contentView.frame.height * 0.56
+        badges.backgroundColor = .red
+        badges.textColor = .white
+        badges.textAlignment = .center
+        badges.text = "\(count)"
         
-        subtitleOrBadge.backgroundColor = .red
-        subtitleOrBadge.textColor = .white
-        subtitleOrBadge.textAlignment = .center
-        subtitleOrBadge.text = "\(count)"
+        badges.clipsToBounds = true
+        badges.layer.masksToBounds = true
+        badges.layer.cornerRadius = contentView.frame.height * 0.28
         
-        subtitleOrBadge.clipsToBounds = true
-        subtitleOrBadge.layer.masksToBounds = true
-        subtitleOrBadge.layer.cornerRadius = edge / 2
-        
-        rightSubview.addSubview(subtitleOrBadge)
-        subtitleOrBadge.snp.makeConstraints { make in
-            make.width.height.equalTo(edge)
+        rightSubview.addSubview(badges)
+        badges.snp.removeConstraints()
+        badges.snp.makeConstraints { make in
+            make.width.height.equalTo(contentView.snp.height).multipliedBy(0.56)
             make.right.equalTo(contentView)
             make.centerY.equalTo(contentView)
         }
     }
     
     private func setupSubtitle(with text: String) {
-        subtitleOrBadge.text = text
+        subtitle.text = text
 
         if isLoginCell {
-            subtitleOrBadge.textColor = .black
-            subtitleOrBadge.textAlignment = .left
-            subtitleOrBadge.font = .systemFont(ofSize: 13, weight: .regular)
+            subtitle.textColor = .black
+            subtitle.textAlignment = .left
+            subtitle.font = .systemFont(ofSize: 13, weight: .regular)
             mainTitle.font = .systemFont(ofSize: 22, weight: .regular)
 
-            contentView.addSubview(subtitleOrBadge)
-            subtitleOrBadge.snp.makeConstraints { make in
+            contentView.addSubview(subtitle)
+            subtitle.snp.removeConstraints()
+            subtitle.snp.makeConstraints { make in
                 make.left.equalTo(leftImage.snp.right).offset(divider)
                 make.right.equalTo(rightSubview)
                 make.height.equalTo(contentView).multipliedBy(0.32)
                 make.top.equalTo(mainTitle.snp.bottom)
             }
         } else {
-            subtitleOrBadge.textColor = .gray
-            subtitleOrBadge.textAlignment = .right
-            subtitleOrBadge.font = .systemFont(ofSize: 17, weight: .regular)
+            subtitle.textColor = .gray
+            subtitle.textAlignment = .right
+            subtitle.font = .systemFont(ofSize: 17, weight: .regular)
             
-            rightSubview.addSubview(subtitleOrBadge)
-            subtitleOrBadge.snp.makeConstraints { make in
+            rightSubview.addSubview(subtitle)
+            rightSubview.snp.removeConstraints()
+            subtitle.snp.makeConstraints { make in
                 make.left.equalTo(leftImage.snp.right)
                 make.right.equalTo(contentView)
                 make.height.equalTo(contentView)
@@ -194,6 +196,8 @@ final class CustomTableViewCell: UITableViewCell {
     @objc private func switchToggled() {
         internalData.switcher = switcher.isOn
         SettingsModel.updateCell(from: indexPath, cell: internalData)
+        
+        print("\(internalData.title) is \(switcher.isOn ? "On": "Off")")
     }
 }
 

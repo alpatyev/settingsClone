@@ -36,6 +36,28 @@
             ]
         },
         {
+            "name": "notifications",
+            "cells": [
+                {
+                    "image": "notifications",
+                    "title": "Notifications"
+                },
+                {
+                    "image": "speaker",
+                    "title": "Sounds"
+                },
+                {
+                    "image": "moon",
+                    "title": "Do Not Disturb",
+                    "subtitle": "Off"
+                },
+                {
+                    "image": "screentime",
+                    "title": "Screen Time"
+                }
+            ]
+        },
+        {
             "name": "general",
             "cells": [
                 {
@@ -49,15 +71,15 @@
                 },
                 {
                     "image": "display",
-                    "title": "Display & Brightness",
+                    "title": "Display & Brightness"
                 },
                 {
                     "image": "siri",
-                    "title": "Siri & Search",
+                    "title": "Siri & Search"
                 },
                 {
                     "image": "wallpaper",
-                    "title": "Wallpaper",
+                    "title": "Wallpaper"
                 },
                 {
                     "image": "fingerprint",
@@ -65,11 +87,11 @@
                 },
                 {
                     "image": "sos",
-                    "title": "Emergency SOS",
+                    "title": "Emergency SOS"
                 },
                 {
                     "image": "exposure",
-                    "title": "Exposure Notifications",
+                    "title": "Exposure Notifications"
                 },
                 {
                     "image": "battery",
@@ -79,6 +101,29 @@
                 {
                     "image": "privacy",
                     "title": "Privacy"
+                }
+            ]
+        },
+        {
+            "name": "purchases",
+            "cells": [
+                {
+                    "image": "appstore",
+                    "title": "Itunes & App Store"
+                },
+                {
+                    "image": "wallet",
+                    "title": "Wallet & Apple Pay"
+                }
+            ]
+        },
+        {
+            "name": "developer",
+            "cells": [
+                {
+                    "image": "hammer",
+                    "title": "Developer",
+                    "subtitle": "more"
                 }
             ]
         }
