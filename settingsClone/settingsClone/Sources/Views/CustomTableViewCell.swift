@@ -71,6 +71,8 @@ final class CustomTableViewCell: UITableViewCell {
         setupMainTitle()
         setupRightSubview()
         
+        separatorInset.left = mainTitle.frame.minX
+        
         if let switchState = internalData.switcher {
             setupSwitcher(with: switchState)
         } else if let subtitleText = internalData.subtitle {
