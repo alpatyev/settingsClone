@@ -1,0 +1,131 @@
+{
+    "sectionData": [
+        {
+            "name": "appleid",
+            "cells": [
+                {
+                    "image": "account",
+                    "title": "Johnny Appleseed",
+                    "subtitle": "Apple ID, iCloud, iTunes & App Store"
+                }
+            ]
+        },
+        {
+            "name": "network",
+            "cells": [
+                {
+                    "image": "airplane",
+                    "title": "Airplane Mode",
+                    "switcher": false
+                },
+                {
+                    "image": "wifi",
+                    "title": "Wi-Fi",
+                    "subtitle": "McDonald’s free"
+                },
+                {
+                    "image": "bluetooth",
+                    "title": "Bluetooth",
+                    "subtitle": "Off"
+                },
+                {
+                    "image": "mobiledata",
+                    "title": "Mobile Data",
+                    "subtitle": "Beeline"
+                }
+            ]
+        },
+        {
+            "name": "notifications",
+            "cells": [
+                {
+                    "image": "notifications",
+                    "title": "Notifications"
+                },
+                {
+                    "image": "speaker",
+                    "title": "Sounds"
+                },
+                {
+                    "image": "moon",
+                    "title": "Do Not Disturb",
+                    "subtitle": "Off"
+                },
+                {
+                    "image": "screentime",
+                    "title": "Screen Time"
+                }
+            ]
+        },
+        {
+            "name": "general",
+            "cells": [
+                {
+                    "image": "general",
+                    "title": "General",
+                    "badges": 2
+                },
+                {
+                    "image": "controls",
+                    "title": "Control Centre"
+                },
+                {
+                    "image": "display",
+                    "title": "Display & Brightness"
+                },
+                {
+                    "image": "siri",
+                    "title": "Siri & Search"
+                },
+                {
+                    "image": "wallpaper",
+                    "title": "Wallpaper"
+                },
+                {
+                    "image": "fingerprint",
+                    "title": "Touch ID & Passcode"
+                },
+                {
+                    "image": "sos",
+                    "title": "Emergency SOS"
+                },
+                {
+                    "image": "exposure",
+                    "title": "Exposure Notifications"
+                },
+                {
+                    "image": "battery",
+                    "title": "Battery",
+                    "badges": 1
+                },
+                {
+                    "image": "privacy",
+                    "title": "Privacy"
+                }
+            ]
+        },
+        {
+            "name": "purchases",
+            "cells": [
+                {
+                    "image": "appstore",
+                    "title": "Itunes & App Store"
+                },
+                {
+                    "image": "wallet",
+                    "title": "Wallet & Apple Pay"
+                }
+            ]
+        },
+        {
+            "name": "developer",
+            "cells": [
+                {
+                    "image": "hammer",
+                    "title": "Developer",
+                    "subtitle": "more"
+                }
+            ]
+        }
+    ]
+}
