@@ -5,10 +5,9 @@
 //  Created by Nikita Alpatiev on 1/1/23.
 //
 
-import Foundation
 import UIKit
 
-extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
+extension SettingsView: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Setup sections
     
@@ -31,8 +30,8 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: - Setup cell
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = list.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier,
-                                                  for: indexPath) as? CustomTableViewCell else {
+        guard let cell = list.dequeueReusableCell(withIdentifier: SettingsCell.identifier,
+                                                  for: indexPath) as? SettingsCell else {
             return UITableViewCell()
         }
         cell.configure(with: SettingsModel.returnCellFrom(indexPath.section, indexPath.row))
@@ -43,14 +42,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         list.deselectRow(at: indexPath, animated: true)
-        if let cell = SettingsModel.returnCellFrom(indexPath.section, indexPath.row) {
-            if (cell.switcher == nil) {
-                let detailViewController = DetailViewController()
-                detailViewController.setupTitle(cell.title)
-                detailViewController.setupImage(from: cell.image)
-                navigationController?.pushViewController(detailViewController, animated: true)
-            }
-        }
+        // notify vc to open detail vc
     }
 }
 

@@ -9,46 +9,33 @@ import UIKit
 import SnapKit
 
 final class SettingsViewController: UIViewController {
-
-    // MARK: - UI
     
-    lazy var list: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(CustomTableViewCell.self,
-                           forCellReuseIdentifier: CustomTableViewCell.identifier)
-        return tableView
-    }()
+    private var settingsModel: SettingsModel? 
     
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
-        setupHierarchy()
-        setupLayout()
+        setupController()
     }
     
-    // MARK: - Setup tableview
+    // MARK: - Setups
     
-    private func setupView() {
-        view.backgroundColor = .white
+    private func setupController() {
+        view = SettingsView()
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.topItem?.title = "Settings"
     }
     
-    // MARK: - Setup tableview hierarchy
+    // MARK: - Actions
     
-    private func setupHierarchy() {
-        view.addSubview(list)
-    }
-    
-    // MARK: - Setup tableview layout
-    
-    private func setupLayout() {
-        list.snp.makeConstraints { make in
-            make.top.bottom.left.right.equalTo(view)
+    public func cellTapped(path: IndexPath) {
+        if let cell = SettingsModel.returnCellFrom(path.section, path.row) {
+            if (cell.switcher == nil) {
+                let detailViewController = DetailViewController()
+                detailViewController.configure(with: cell)
+                navigationController?.pushViewController(detailViewController, animated: true)
+            }
         }
     }
 }

@@ -1,5 +1,5 @@
 //
-//  CustomTableViewCell.swift
+//  SettingsCell.swift
 //  settingsClone
 //
 //  Created by Nikita Alpatiev on 1/4/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CustomTableViewCell: UITableViewCell {
+final class SettingsCell: UITableViewCell {
     
     static var identifier = "settings"
     
@@ -185,7 +185,6 @@ final class CustomTableViewCell: UITableViewCell {
     @objc private func switchToggled() {
         internalData.switcher = switcher.isOn
         SettingsModel.updateCell(from: indexPath, cell: internalData)
-        
         print("\(internalData.title) is \(switcher.isOn ? "On": "Off")")
     }
 }
