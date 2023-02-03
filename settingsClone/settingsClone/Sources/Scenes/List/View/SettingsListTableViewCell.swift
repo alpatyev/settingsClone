@@ -1,5 +1,5 @@
 //
-//  SettingsTableViewCell.swift
+//  SettingsListTableViewCell.swift
 //  settingsClone
 //
 //  Created by Nikita Alpatiev on 1/4/23.
@@ -7,9 +7,13 @@
 
 import UIKit
 
-final class SettingsTableViewCell: UITableViewCell {
+final class SettingsListTableViewCell: UITableViewCell {
     
-    static var identifier = "settings"
+    // MARK: - Cell type ID
+    
+    static let identifier = "settings"
+    
+    // MARK: - Model
     
     private var internalData = Cell(image: "default", title: "") {
         didSet {
