@@ -1,5 +1,5 @@
 //
-//  SettingsViewController.swift
+//  SettingsController.swift
 //  settingsClone
 //
 //  Created by Nikita Alpatiev on 1/1/23.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class SettingsViewController: UIViewController {
+final class SettingsController: UIViewController {
 
     // MARK: - UI
     
@@ -16,8 +16,8 @@ final class SettingsViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(CustomTableViewCell.self,
-                           forCellReuseIdentifier: CustomTableViewCell.identifier)
+        tableView.register(SettingsTableViewCell.self,
+                           forCellReuseIdentifier: SettingsTableViewCell.identifier)
         return tableView
     }()
     

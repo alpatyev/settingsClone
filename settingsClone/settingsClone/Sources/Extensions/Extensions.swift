@@ -8,7 +8,9 @@
 import Foundation
 import UIKit
 
-extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
+// Have to change to view
+
+extension SettingsController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Setup sections
     
@@ -31,8 +33,8 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: - Setup cell
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = list.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier,
-                                                  for: indexPath) as? CustomTableViewCell else {
+        guard let cell = list.dequeueReusableCell(withIdentifier: SettingsTableViewCell.identifier,
+                                                  for: indexPath) as? SettingsTableViewCell else {
             return UITableViewCell()
         }
         cell.configure(with: SettingsModel.returnCellFrom(indexPath.section, indexPath.row))
@@ -45,7 +47,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         list.deselectRow(at: indexPath, animated: true)
         if let cell = SettingsModel.returnCellFrom(indexPath.section, indexPath.row) {
             if (cell.switcher == nil) {
-                let detailViewController = DetailViewController()
+                let detailViewController = DetailController()
                 detailViewController.setupTitle(cell.title)
                 detailViewController.setupImage(from: cell.image)
                 navigationController?.pushViewController(detailViewController, animated: true)

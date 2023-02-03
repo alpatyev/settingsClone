@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         SettingsModel.setupData()
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = UINavigationController(rootViewController: SettingsViewController())
+        window?.rootViewController = UINavigationController(rootViewController: SettingsController())
         window?.makeKeyAndVisible()
     }
 }

@@ -1,5 +1,5 @@
 //
-//  DetailViewController.swift
+//  DetailController.swift
 //  settingsClone
 //
 //  Created by Nikita Alpatiev on 1/5/23.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class DetailViewController: UIViewController {
+class DetailController: UIViewController {
     
     private var isPulsing = false
     

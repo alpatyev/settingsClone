@@ -1,5 +1,5 @@
 //
-//  CustomTableViewCell.swift
+//  SettingsTableViewCell.swift
 //  settingsClone
 //
 //  Created by Nikita Alpatiev on 1/4/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CustomTableViewCell: UITableViewCell {
+final class SettingsTableViewCell: UITableViewCell {
     
     static var identifier = "settings"
     
