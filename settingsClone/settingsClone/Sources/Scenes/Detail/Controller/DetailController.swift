@@ -10,75 +10,39 @@ import SnapKit
 
 class DetailController: UIViewController {
     
+    var model: DetalModel? {
+        didSet {
+            detailView?.updateAnimation(with: model?.isFlipping ?? false)
+        }
+    }
     
-    private var isPulsing = false
-    
-    // MARK: - UI
-    
-    private lazy var icon = UIImageView()
+    private var detailView: DetailView? {
+        guard isViewLoaded else { return nil }
+        return view as? DetailView
+    }
     
     // MARK: - Lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
-        setupHierarchy()
-        setupLayout()
-    }
-    
-    // MARK: - Setups
-    
-    private func setupView(){
-        view.backgroundColor = .white
+        
         navigationItem.largeTitleDisplayMode = .never
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handle))
-        view.isUserInteractionEnabled = true
-        view.addGestureRecognizer(tapGesture)
+
+        view = DetailView()
+    }
+ 
+    
+    // MARK: - Confguration
+            
+    public func setupData(with model: DetalModel) {
+        self.model = model
+        navigationItem.title = model.title
+        detailView?.configure(with: model.image, with: self)
     }
     
-    private func setupHierarchy() {
-        view.addSubview(icon)
-    }
+    // MARK: - User actions and updates
     
-    private func setupLayout() {
-        icon.snp.makeConstraints { make in
-            make.width.height.equalTo(view.snp.width).multipliedBy(0.4)
-            make.center.equalToSuperview()
-        }
-    }
-    
-    public func setupTitle(_ text: String) {
-        navigationItem.title = text
-    }
-    
-    public func setupImage(from name: String) {
-        guard let image = UIImage(named: name) else {
-            return
-        }
-        icon.image = image
-        icon.clipsToBounds = true
-        icon.layer.cornerRadius = view.frame.width * 0.05
-    }
-    
-    // MARK: - Actions
-    
-    @objc private func handle(sender: UITapGestureRecognizer) {
-        let spinX = CABasicAnimation(keyPath: "transform.scale.x")
-        spinX.duration = 1.6
-        spinX.fromValue = 1
-        spinX.toValue = -1
-        spinX.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-        spinX.repeatCount = .greatestFiniteMagnitude
-        spinX.autoreverses = true
-        
-        if !isPulsing {
-            isPulsing = true
-            icon.layer.add(spinX, forKey: nil)
-        } else {
-            isPulsing = false
-            icon.layer.removeAllAnimations()
-        }
+    public func imageTapped() {
+        model?.isFlipping.toggle()
     }
 }
-

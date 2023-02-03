@@ -8,4 +8,5 @@
 struct DetalModel {
     let image: String
     let title: String
+    var isFlipping: Bool = false
 }

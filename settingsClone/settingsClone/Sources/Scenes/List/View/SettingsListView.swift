@@ -17,8 +17,10 @@ class SettingsListView: UIView {
         list.reloadData()
     }
     
-    func configureList(at indexPath: IndexPath, with model: Cell) {
-        models[indexPath.section].cells[indexPath.row] = model
+    func configureList(at indexPath: IndexPath?, with model: Cell) {
+        guard let path = indexPath else { return }
+        models[path.section].cells[path.row] = model
+        list.reloadData()
     }
 
     // MARK: - Private properties

@@ -41,20 +41,20 @@ final class SettingsListController: UIViewController {
     
     // MARK: - User actions
     
-    public func switchChanged(at indexPath: IndexPath?, with cell: Cell) {
-        model?.updateCellSwitcher(from: indexPath, switchState: cell.switcher)
+    public func switchChanged(at indexPath: IndexPath?, with state: Bool?) {
+        model?.updateCellSwitcher(from: indexPath, switchState: state)
         
-        if let path = indexPath {
-            settingsListView?.configureList(at: path, with: cell)
+        if let cell = model?.returnCell(from: indexPath) {
+            settingsListView?.configureList(at: indexPath, with: cell)
         }
     }
     
     public func selectedCell(at indexPath: IndexPath) {
-        if let cell = model?.returnCellFrom(indexPath.section, indexPath.row) {
+        if let cell = model?.returnCell(from: indexPath) {
             if (cell.switcher == nil) {
                 let detailViewController = DetailController()
-                detailViewController.setupTitle(cell.title)
-                detailViewController.setupImage(from: cell.image)
+                let detailModel = DetalModel(image: cell.image, title: cell.title)
+                detailViewController.setupData(with: detailModel)
                 navigationController?.pushViewController(detailViewController, animated: true)
             }
         }

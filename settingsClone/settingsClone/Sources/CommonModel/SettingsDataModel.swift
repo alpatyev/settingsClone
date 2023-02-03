@@ -51,26 +51,16 @@ final class SettinsDataModel {
     
     // MARK: - Update internal data
     
-    public func updateCellSwitcher(from path: IndexPath?, switchState: Bool?) {
-        guard let indexPath = path else {
-            return
-        }
-        guard indexPath.section < list.count else {
-            return
-        }
-        guard indexPath.row < list[indexPath.section].cells.count else {
-            return
-        }
-        list[indexPath.section].cells[indexPath.row].switcher = switchState
+    public func updateCellSwitcher(from indexPath: IndexPath?, switchState: Bool?) {
+        guard let path = indexPath else { return }
+        list[path.section].cells[path.row].switcher = switchState
     }
     
-    public func returnCellFrom(_ sectionIndex: Int, _ rowIndex: Int) -> Cell? {
-        guard sectionIndex < list.count else {
-            return nil
-        }
-        guard rowIndex < list[sectionIndex].cells.count else {
-            return nil
-        }
-        return list[sectionIndex].cells[rowIndex]
+    public func returnCell(from indexPath: IndexPath?) -> Cell? {
+        guard let path = indexPath else { return nil }
+        guard path.section < list.count else { return nil }
+        guard path.row < list[path.section].cells.count else { return nil }
+        
+        return list[path.section].cells[path.row]
     }
 }

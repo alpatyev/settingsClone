@@ -191,7 +191,7 @@ final class SettingsListTableViewCell: UITableViewCell {
     
     @objc private func switchToggled() {
         guard let table = superview as? UITableView else { return }
-        controller?.switchChanged(at: table.indexPath(for: self), with: model)
+        controller?.switchChanged(at: table.indexPath(for: self), with: switcher.isOn)
         
         print("\(model.title) is \(switcher.isOn ? "On": "Off")")
     }
