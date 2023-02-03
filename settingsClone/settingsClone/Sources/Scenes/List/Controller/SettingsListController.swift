@@ -5,45 +5,13 @@
 //  Created by Nikita Alpatiev on 1/1/23.
 //
 
-import UIKit
+import Foundation
 import SnapKit
+import UIKit
 
-final class SettingsController: UIViewController {
+final class SettingsListController: UIViewController {
     
-    /*
-     // MARK: - UI
-     
-     lazy var list: UITableView = {
-         let tableView = UITableView(frame: .zero, style: .grouped)
-         tableView.delegate = self
-         tableView.dataSource = self
-         tableView.register(SettingsTableViewCell.self,
-                            forCellReuseIdentifier: SettingsTableViewCell.identifier)
-         return tableView
-     }()
-     
-     // MARK: - Setup tableview
-     
-     private func setupView() {
-         view.backgroundColor = .white
-         navigationController?.navigationBar.prefersLargeTitles = true
-         navigationController?.navigationBar.topItem?.title = "Settings"
-     }
-     
-     // MARK: - Setup tableview hierarchy
-     
-     private func setupHierarchy() {
-         view.addSubview(list)
-     }
-     
-     private func setupLayout() {
-         list.snp.makeConstraints { make in
-             make.top.bottom.left.right.equalTo(view)
-         }
-     }
-     */
-    
-    var model: SettinsModel?
+    var model: SettinsDataModel?
     
     private var settingsListView: SettingsListView? {
         guard isViewLoaded else { return nil }
@@ -54,13 +22,41 @@ final class SettingsController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.topItem?.title = "Settings"
+        
+        view = SettingsListView()
+        model = SettinsDataModel()
+        
+        configureView()
     }
     
-    // MARK: - Configurations
-    
-    func configureView() {
+    // MARK: - Setups
+        
+    private func configureView() {
         guard let models = model?.getSettingsList() else { return }
-        settingsListView?.configureView(with: models)
+        settingsListView?.configureView(with: models, controller: self)
+    }
+    
+    // MARK: - User actions
+    
+    public func switchChanged(at indexPath: IndexPath?, with cell: Cell) {
+        model?.updateCellSwitcher(from: indexPath, switchState: cell.switcher)
+        
+        if let path = indexPath {
+            settingsListView?.configureList(at: path, with: cell)
+        }
+    }
+    
+    public func selectedCell(at indexPath: IndexPath) {
+        if let cell = model?.returnCellFrom(indexPath.section, indexPath.row) {
+            if (cell.switcher == nil) {
+                let detailViewController = DetailController()
+                detailViewController.setupTitle(cell.title)
+                detailViewController.setupImage(from: cell.image)
+                navigationController?.pushViewController(detailViewController, animated: true)
+            }
+        }
     }
 }

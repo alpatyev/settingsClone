@@ -1,5 +1,5 @@
 //
-//  SettingsModel.swift
+//  SettingsDataModel.swift
 //  settingsClone
 //
 //  Created by Nikita Alpatiev on 2/3/23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class SettinsModel {
+final class SettinsDataModel {
     
     // MARK: - Private properties
     
@@ -51,7 +51,7 @@ final class SettinsModel {
     
     // MARK: - Update internal data
     
-    public func updateCell(from path: IndexPath?, cell: Cell) {
+    public func updateCellSwitcher(from path: IndexPath?, switchState: Bool?) {
         guard let indexPath = path else {
             return
         }
@@ -61,7 +61,7 @@ final class SettinsModel {
         guard indexPath.row < list[indexPath.section].cells.count else {
             return
         }
-        list[indexPath.section].cells[indexPath.row] = cell
+        list[indexPath.section].cells[indexPath.row].switcher = switchState
     }
     
     public func returnCellFrom(_ sectionIndex: Int, _ rowIndex: Int) -> Cell? {

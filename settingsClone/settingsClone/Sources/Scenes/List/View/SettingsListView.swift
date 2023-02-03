@@ -11,14 +11,20 @@ class SettingsListView: UIView {
     
     // MARK: - Configuration
 
-    func configureView(with models: [Section]) {
+    func configureView(with models: [Section], controller: SettingsListController) {
         self.models = models
-        models.forEach { print($0.name) }
+        self.controller = controller
         list.reloadData()
+    }
+    
+    func configureList(at indexPath: IndexPath, with model: Cell) {
+        models[indexPath.section].cells[indexPath.row] = model
     }
 
     // MARK: - Private properties
-
+    
+    private var controller: SettingsListController?
+    
     private var models = [Section]()
     
     // MARK: - UI
@@ -57,13 +63,14 @@ class SettingsListView: UIView {
     }
     
     private func setupHierarchy() {
-        
+        addSubview(list)
     }
     
     private func setupLayout() {
-        
+        list.snp.makeConstraints { make in
+            make.top.bottom.left.right.equalToSuperview()
+        }
     }
-
 }
 
 // MARK: - UITableViewDelegate & UITableViewDataSource
@@ -95,7 +102,7 @@ extension SettingsListView: UITableViewDelegate, UITableViewDataSource {
                                                   for: indexPath) as? SettingsListTableViewCell else {
             return UITableViewCell()
         }
-        cell.configure(with: models[indexPath.section].cells[indexPath.row])
+        cell.configure(with: models[indexPath.section].cells[indexPath.row], controller: self.controller)
         return cell
     }
     
@@ -103,26 +110,6 @@ extension SettingsListView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         list.deselectRow(at: indexPath, animated: true)
-        if let cell = SettingsModel.returnCellFrom(indexPath.section, indexPath.row) {
-            if (cell.switcher == nil) {
-                let detailViewController = DetailController()
-                detailViewController.setupTitle(cell.title)
-                detailViewController.setupImage(from: cell.image)
-                navigationController?.pushViewController(detailViewController, animated: true)
-            }
-        }
+        controller?.selectedCell(at: indexPath)
     }
 }
-
-extension SettingsListTableViewCell {
-    
-    // MARK: - Index path inside cell class
-    
-    var indexPath: IndexPath? {
-        guard let table = superview as? UITableView else {
-            return nil
-        }
-        return table.indexPath(for: self)
-    }
-}
-

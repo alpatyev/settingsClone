@@ -10,6 +10,7 @@ import SnapKit
 
 class DetailController: UIViewController {
     
+    
     private var isPulsing = false
     
     // MARK: - UI

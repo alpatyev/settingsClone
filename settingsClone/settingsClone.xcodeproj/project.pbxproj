@@ -20,7 +20,7 @@
 		648E2D5E298BE0050069F4AE /* SettingsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648E2D5D298BE0050069F4AE /* SettingsListView.swift */; };
 		648E2D66298D6DF20069F4AE /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648E2D65298D6DF20069F4AE /* DetailModel.swift */; };
 		648E2D68298D73840069F4AE /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648E2D67298D73840069F4AE /* DetailView.swift */; };
-		648E2D6B298D837D0069F4AE /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648E2D6A298D837D0069F4AE /* SettingsModel.swift */; };
+		648E2D6B298D837D0069F4AE /* SettingsDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648E2D6A298D837D0069F4AE /* SettingsDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,7 +38,7 @@
 		648E2D5D298BE0050069F4AE /* SettingsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsListView.swift; sourceTree = "<group>"; };
 		648E2D65298D6DF20069F4AE /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
 		648E2D67298D73840069F4AE /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
-		648E2D6A298D837D0069F4AE /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
+		648E2D6A298D837D0069F4AE /* SettingsDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,7 +189,7 @@
 		648E2D69298D835A0069F4AE /* CommonModel */ = {
 			isa = PBXGroup;
 			children = (
-				648E2D6A298D837D0069F4AE /* SettingsModel.swift */,
+				648E2D6A298D837D0069F4AE /* SettingsDataModel.swift */,
 			);
 			path = CommonModel;
 			sourceTree = "<group>";
@@ -277,7 +277,7 @@
 				648E2D68298D73840069F4AE /* DetailView.swift in Sources */,
 				648E2D66298D6DF20069F4AE /* DetailModel.swift in Sources */,
 				644B89AA29618B3F007F126D /* AppDelegate.swift in Sources */,
-				648E2D6B298D837D0069F4AE /* SettingsModel.swift in Sources */,
+				648E2D6B298D837D0069F4AE /* SettingsDataModel.swift in Sources */,
 				644B89AC29618B3F007F126D /* SceneDelegate.swift in Sources */,
 				644B89C729618D52007F126D /* SettingsListController.swift in Sources */,
 				641CB82629671E6300E5E23D /* DetailController.swift in Sources */,
