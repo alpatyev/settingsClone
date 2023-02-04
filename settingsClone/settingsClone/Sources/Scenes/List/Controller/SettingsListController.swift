@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SnapKit
 import UIKit
 
 final class SettingsListController: UIViewController {

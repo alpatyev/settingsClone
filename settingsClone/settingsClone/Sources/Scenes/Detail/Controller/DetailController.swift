@@ -6,15 +6,10 @@
 //
 
 import UIKit
-import SnapKit
 
 class DetailController: UIViewController {
     
-    var model: DetalModel? {
-        didSet {
-            detailView?.updateAnimation(with: model?.isFlipping ?? false)
-        }
-    }
+    var model: DetalModel?
     
     private var detailView: DetailView? {
         guard isViewLoaded else { return nil }
@@ -29,20 +24,21 @@ class DetailController: UIViewController {
         navigationItem.largeTitleDisplayMode = .never
 
         view = DetailView()
+        
+        detailView?.configure(with: model?.image ?? "", with: self)
     }
  
-    
     // MARK: - Confguration
             
     public func setupData(with model: DetalModel) {
         self.model = model
         navigationItem.title = model.title
-        detailView?.configure(with: model.image, with: self)
     }
     
     // MARK: - User actions and updates
     
     public func imageTapped() {
         model?.isFlipping.toggle()
+        detailView?.updateAnimation(with: model?.isFlipping ?? false)
     }
 }

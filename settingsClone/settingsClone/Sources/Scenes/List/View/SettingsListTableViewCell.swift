@@ -26,7 +26,6 @@ final class SettingsListTableViewCell: UITableViewCell {
         model.image == "account" ? true : false
     }
         
-    
     // MARK: - UI
     
     private var divider = UIScreen.main.bounds.width * 0.035
@@ -52,9 +51,7 @@ final class SettingsListTableViewCell: UITableViewCell {
     // MARK: - Get model data
     
     public func configure(with recieved: Cell?, controller: SettingsListController?) {
-        guard let model = recieved else {
-            return
-        }
+        guard let model = recieved else { return }
         self.model = model
         self.controller = controller
     }
@@ -81,7 +78,7 @@ final class SettingsListTableViewCell: UITableViewCell {
     private func setupImage(_ frame: CGRect) {
         let imageEdge = frame.height * 0.64
         
-        if let icon = UIImage.init(named: model.image) {
+        if let icon = UIImage(named: model.image) {
             leftImage.image = icon
         } else {
             leftImage.image = UIImage.init(named: "default")
@@ -192,7 +189,6 @@ final class SettingsListTableViewCell: UITableViewCell {
     @objc private func switchToggled() {
         guard let table = superview as? UITableView else { return }
         controller?.switchChanged(at: table.indexPath(for: self), with: switcher.isOn)
-        
         print("\(model.title) is \(switcher.isOn ? "On": "Off")")
     }
 }

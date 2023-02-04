@@ -8,5 +8,9 @@
 struct DetalModel {
     let image: String
     let title: String
-    var isFlipping: Bool = false
+    var isFlipping: Bool = false {
+        didSet {
+            print("'\(title)' icon \(isFlipping ? "is" : "is not") flipping now" )
+        }
+    }
 }

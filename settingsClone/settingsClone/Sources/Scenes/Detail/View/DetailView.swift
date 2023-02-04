@@ -15,7 +15,11 @@ class DetailView: UIView {
     
     // MARK: - UI
     
-    private lazy var icon = UIImageView()
+    private lazy var icon: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "account")
+        return imageView
+    }()
     
     // MARK: - Initial
 
@@ -50,7 +54,7 @@ class DetailView: UIView {
     
     private func setupLayout() {
         icon.snp.makeConstraints { make in
-            make.width.height.equalTo(snp.width).multipliedBy(0.4)
+            make.width.height.equalTo(self.snp.width).multipliedBy(0.4)
             make.center.equalToSuperview()
         }
     }
@@ -58,19 +62,17 @@ class DetailView: UIView {
     // MARK: - Configuration
     
     public func configure(with image: String, with controller: DetailController) {
-        guard let image = UIImage(named: image) else { return }
-        icon.image = image
+        icon.layer.cornerRadius = 16
+        icon.image = UIImage(named: image)
         icon.clipsToBounds = true
-        icon.layer.cornerRadius = frame.width * 0.05
-        
         self.controller = controller
     }
     
-    public func updateAnimation(with state: Bool) {
-        state ? stopAnimation() : addAnimation()
-    }
-    
     // MARK: - Actions
+
+    public func updateAnimation(with state: Bool) {
+        state ? addAnimation() : stopAnimation()
+    }
     
     @objc private func handle(sender: UITapGestureRecognizer) {
         controller?.imageTapped()
