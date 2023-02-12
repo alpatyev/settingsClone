@@ -1,5 +1,5 @@
 //
-//  CustomTableViewCell.swift
+//  SettingsListTableViewCell.swift
 //  settingsClone
 //
 //  Created by Nikita Alpatiev on 1/4/23.
@@ -7,23 +7,28 @@
 
 import UIKit
 
-final class CustomTableViewCell: UITableViewCell {
+final class SettingsListTableViewCell: UITableViewCell {
     
-    static var identifier = "settings"
+    // MARK: - Cell type ID
     
-    private var internalData = Cell(image: "default", title: "") {
+    static let identifier = "settings"
+    
+    // MARK: - Private properties
+    
+    private var controller: SettingsListController?
+    private var model = Cell(image: "default", title: "") {
         didSet {
-            accessoryType = internalData.switcher == nil ? .disclosureIndicator : .none
+            accessoryType = model.switcher == nil ? .disclosureIndicator : .none
         }
     }
     
     private var isLoginCell: Bool {
-        internalData.image == "account" ? true : false
+        model.image == "account" ? true : false
     }
+        
+    // MARK: - UI
     
     private var divider = UIScreen.main.bounds.width * 0.035
-    
-    // MARK: - UI
     
     private lazy var leftImage = UIImageView()
     
@@ -45,11 +50,10 @@ final class CustomTableViewCell: UITableViewCell {
     
     // MARK: - Get model data
     
-    public func configure(with recieved: Cell?) {
-        guard let model = recieved else {
-            return
-        }
-        internalData = model
+    public func configure(with recieved: Cell?, controller: SettingsListController?) {
+        guard let model = recieved else { return }
+        self.model = model
+        self.controller = controller
     }
     
     // MARK: - Setups and updates UI
@@ -74,7 +78,7 @@ final class CustomTableViewCell: UITableViewCell {
     private func setupImage(_ frame: CGRect) {
         let imageEdge = frame.height * 0.64
         
-        if let icon = UIImage.init(named: internalData.image) {
+        if let icon = UIImage(named: model.image) {
             leftImage.image = icon
         } else {
             leftImage.image = UIImage.init(named: "default")
@@ -93,7 +97,7 @@ final class CustomTableViewCell: UITableViewCell {
     }
     
     private func setupMainTitle() {
-        mainTitle.text = internalData.title
+        mainTitle.text = model.title
         mainTitle.font = .systemFont(ofSize: 17, weight: .regular)
         
         mainTitle.snp.removeConstraints()
@@ -106,11 +110,11 @@ final class CustomTableViewCell: UITableViewCell {
     }
     
     private func setupRightSubview() {
-        if let switchState = internalData.switcher {
+        if let switchState = model.switcher {
             setupSwitcher(with: switchState)
-        } else if let subtitleText = internalData.subtitle {
+        } else if let subtitleText = model.subtitle {
             setupSubtitle(with: subtitleText)
-        } else if let badgeCount = internalData.badges {
+        } else if let badgeCount = model.badges {
             setupBadges(with: badgeCount)
         }
     }
@@ -183,10 +187,8 @@ final class CustomTableViewCell: UITableViewCell {
     // MARK: - Actions
     
     @objc private func switchToggled() {
-        internalData.switcher = switcher.isOn
-        SettingsModel.updateCell(from: indexPath, cell: internalData)
-        
-        print("\(internalData.title) is \(switcher.isOn ? "On": "Off")")
+        guard let table = superview as? UITableView else { return }
+        controller?.switchChanged(at: table.indexPath(for: self), with: switcher.isOn)
+        print("\(model.title) is \(switcher.isOn ? "On": "Off")")
     }
 }
-
